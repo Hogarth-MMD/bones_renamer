@@ -1,0 +1,12 @@
+This is a Blender add-on to do a mass renaming of bones from and to several types of standard  armatures of 3D character models. It is intended to help save time in converting 3D character models and animations from one format to another. The supported armature types are:
+
+MMD (MikuMikuDance) English
+XNALara
+Daz/Poser
+Blender Rigify (names of bones before the complete Rigify rig is generated)
+Sims 2
+Motion Builder
+3ds Max
+Bepu full body IK
+MMD (MikuMikuDance) Japanese
+MMD Japanese.L.R (bones renamed to add .L and .R suffixes using an import option of the Blender mmd_tools add-on)
