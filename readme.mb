@@ -11,5 +11,5 @@ Bepu full body IK
 MMD (MikuMikuDance) Japanese
 MMD Japanese.L.R (bones renamed to add .L and .R suffixes using an import option of the Blender mmd_tools add-on)
 
-After installing the add-on, its panel should appear at the  tab at the bottom left side of Blender's 3D view. 
+After installing the add-on, its panel should appear at the tab at the bottom left side of Blender's 3D view. 
 There are 2 drop-down list menus for the source and destination bone maps. With the armature selected to be the active object, press the button to do a mass renaming of bones.
