@@ -1,30 +1,34 @@
+bl_info = {
+	"name": "Bones Renamer",
+	"author": "Hogarth-MMD,空想幻灵",
+	"version": (1, 1),
+	"blender": (2, 83, 0),
+	"location": "View3D > Tool Shelf > Bones Renamer",
+	"description": "bones renamer for armature conversion",
+	"warning": "",
+	"wiki_url": "https://github.com/uitcis/bones_renamer",
+	"category": "Object",
+	}
 import bpy
+from bpy.types import Operator, Panel, PropertyGroup
+
 from . import boneMaps_renamer
 from .boneMaps_renamer import *
 
 import imp
 imp.reload(boneMaps_renamer)
 
-bl_info = {
-	"name": "Bones Renamer",
-	"author": "",
-	"version": (1, 0),
-	"blender": (2, 79, 0),
-	"location": "View3D > Tool Shelf > Bones Renamer",
-	"description": "bones renamer for armature conversion",
-	"warning": "",
-	"wiki_url": "",
-	"category": "Object",
-	}
+# Panel
 
-class BonesRenamerPanel(bpy.types.Panel):
+class Bones_PT_Renamer(Panel):
 	"""Creates the Bones Renamer Panel in a VIEW_3D TOOLS tab"""
-	bl_label = "Bones Renamer Panel"
-	bl_idname = "OBJECT_PT_bones_renamer"
 	bl_space_type = "VIEW_3D"
 	bl_region_type = "TOOLS"
-	bl_category = "bones_renamer"
-
+	bl_label = "Bones Renamer Panel"
+	
+	#bl_category = "Bones Renamer"
+	
+	bl_idname = "OBJECT_PT_bones_renamer"
 
 	def draw(self, context):
 		layout = self.layout
@@ -40,7 +44,7 @@ class BonesRenamerPanel(bpy.types.Panel):
 		row = layout.row()
 
 def main(context):
-	use_international_fonts_display_names_bones()
+	#use_international_fonts_display_names_bones()
 	unhide_all_armatures()
 	rename_bones(bpy.context.scene.Origin_Armature_Type, bpy.context.scene.Destination_Armature_Type)
 	rename_finger_bones(bpy.context.scene.Origin_Armature_Type, bpy.context.scene.Destination_Armature_Type)
@@ -48,7 +52,7 @@ def main(context):
 	bpy.ops.pose.select_all(action='SELECT')
 
 
-class BonesRenamer(bpy.types.Operator):
+class BonesRenamer(Operator):
 	"""Mass bones renamer for armature conversion"""
 	bl_idname = "object.bones_renamer"
 	bl_label = "Bones Renamer"
@@ -71,13 +75,28 @@ class BonesRenamer(bpy.types.Operator):
 		main(context)
 		return {'FINISHED'}
 
+#####################
 
+    
+classes = (
+   Bones_PT_Renamer,
+   BonesRenamer,
+)
+
+register, unregister = bpy.utils.register_classes_factory(classes)
+
+# Register
 def register():
-	bpy.utils.register_module(__name__)
+    for cls in classes:
+        bpy.utils.register_class(cls)
+    
 
 
+# Unregister
 def unregister():
-	bpy.utils.unregister_module(__name__)
+    for cls in classes:
+        bpy.utils.unregister_class(cls)
+   
 
 
 if __name__ == "__main__":
