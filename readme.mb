@@ -1,4 +1,5 @@
 骨骼重命名插件经过简单的修复和拼接，预设需要修改代码添加，希望有大佬能优化下能通过CSV或者其他文档添加预设
+最新版见 https://gitee.com/uitcis/bones_renamer
 This is a Blender add-on to do a mass renaming of bones from and to several types of standard  armatures of 3D character models. It is intended to help save time in converting 3D character models and animations from one format to another. The supported armature types are:
 
 MMD (MikuMikuDance) English
